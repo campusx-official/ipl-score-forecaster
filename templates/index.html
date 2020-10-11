@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IPL Score Forecaster</title>
+</head>
+<body>
+
+<h1>IPL Score Forecaster</h1>
+
+{% if score %}
+    <h2>The final score would be {{ score }}</h2>
+{% endif %}
+
+<form action="/predict" method="post">
+    <label>Venue</label><Br>
+    <select name="venue">
+        {% for i in venue_list %}
+            <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+    </select><br>
+
+    <label>Batting team</label><br>
+    <select name="batting_team">
+        {% for i in team_list %}
+            <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+    </select><br>
+
+    <label>Bowling team</label><br>
+    <select name="bowling_team">
+        {% for i in team_list %}
+            <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+    </select><br>
+
+    <label>Runs Now</label><br>
+    <input type="number" name="runs_now"><br>
+
+    <label>Wickets Now</label><br>
+    <input type="number" name="wickets_now"><br>
+
+    <label>Over Now</label><br>
+    <input type="text" name="overs_now"><br>
+
+    <label>Runs last 5 overs</label><br>
+    <input type="number" name="runs_last5"><br>
+
+    <label>Wickets last 5 overs</label><br>
+    <input type="number" name="wickets_last5"><br><br>
+
+    <input type="submit" value="Predict Score">
+
+</form>
+
+</body>
+</html>
